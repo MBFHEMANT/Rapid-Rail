@@ -3,19 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account Gateway - RRTS</title>
+    <title>Secure Access - RRTS Portal</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="login-bg">
+    <div class="login-glow"></div>
     <div class="login-container">
-        <h2>Secure Terminal Login</h2>
+        <div class="login-header">
+            <div class="login-logo">🚆</div>
+            <h2>Secure Terminal Login</h2>
+            <p>Enter administrative operational credentials</p>
+        </div>
         <form onsubmit="return loginUser()">
-            <input type="text" id="username" placeholder="Demo User: Namo" required>
-            <input type="password" id="password" placeholder="Demo Pass: 1234" required>
-            <button type="submit">Authenticate Session</button>
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Demo User: Namo" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Demo Pass: 1234" required>
+            </div>
+            <button type="submit" class="btn btn-submit">Authenticate Session</button>
         </form>
         <div class="form-footer">
-            <p><a href="#" style="color: #005bbb; text-decoration: none;">Forgot Password Details?</a></p>
+            <a href="#">Forgot security access parameters?</a>
         </div>
     </div>
 

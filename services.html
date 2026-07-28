@@ -5,79 +5,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>More Services - Transit Utilities</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* This explicit style block overrides any blocking CSS layers instantly */
-        .service-item button {
-            width: 100%;
-            height: 100%;
-            cursor: pointer !important;
-            position: relative;
-            z-index: 2000 !important; /* Forces buttons to sit on the very top layer */
-            border: none;
-            background: transparent;
-            font-weight: bold;
-            padding: 5px;
-        }
-        .service-item {
-            cursor: pointer;
-            transition: transform 0.2s, background-color 0.2s;
-        }
-        .service-item:hover {
-            background-color: #eef5fc !important;
-            transform: translateY(-2px);
-        }
-    </style>
 </head>
-<body>
+<body class="dashboard-bg">
     <header class="navbar">
-        <div class="logo">🚆 Utility Panel</div>
+        <div class="logo"><span>⚙️</span> Utility Panel</div>
     </header>
 
     <div class="services-container">
-        <div class="services-header">
-            <h2>System Add-ons For You</h2>
-            <p>Supplementary integrations designed to manage trip tracking data efficiently.</p>
+        <!-- Main Standard Category Grid View Block -->
+        <div id="defaultServicesBlock">
+            <div class="services-header">
+                <h2>System Add-ons For You</h2>
+                <p>Supplementary integrations designed to manage trip tracking data and connecting transit modes efficiently.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">₹</div>
+                    <button onclick="window.location.href='ticket.html'">Fare Tools</button>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">📅</div>
+                    <button onclick="openUtilitySubSection('trainTimingsPanel')">Train Timings</button>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🚌</div>
+                    <button onclick="openUtilitySubSection('busSchedulePanel')">Feeder Buses</button>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🗺️</div>
+                    <button onclick="openUtilitySubSection('routeMapPanel')">Network Map</button>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">📡</div>
+                    <button onclick="window.location.href='home.html'">Live Tracking</button>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🏢</div>
+                    <button onclick="alert('Station amenities indexing feature releasing soon!')">Station Info</button>
+                </div>
+            </div>
         </div>
-        
-        <div class="services-grid">
-            <!-- Item 1: Open Fare Calculator -->
-            <div class="service-item" onclick="window.location.href='ticket.html'">
-                <div class="service-icon">₹</div>
-                <button>Fare Tools</button>
+
+        <!-- Working Sub-Panel 1: Dynamic Train Schedules Matrix -->
+        <div id="trainTimingsPanel" class="hidden">
+            <div class="services-header">
+                <h2>Live Train Timings & Frequency</h2>
+                <p>Scheduled rapid transit operations tracking across priority sectors.</p>
             </div>
-            <!-- Item 2: Link to Bookings Tab -->
-            <div class="service-item" onclick="window.location.href='bookings.html'">
-                <div class="service-icon">📅</div>
-                <button>Train Timings</button>
+            <div class="table-responsive">
+                <table class="timing-table">
+                    <thead>
+                        <tr><th>Train ID</th><th>Origin Terminal</th><th>Destination Point</th><th>Departure</th><th>Frequency</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>NB-101</td><td>Sahibabad (A03)</td><td>Duhai Depot (A07)</td><td>06:00 AM</td><td>Every 15 Mins</td></tr>
+                        <tr><td>NB-102</td><td>New Ashok Nagar (A01)</td><td>Meerut South (A11)</td><td>06:15 AM</td><td>Every 10 Mins</td></tr>
+                        <tr><td>NB-103</td><td>Anand Vihar (A02)</td><td>Ghaziabad (A04)</td><td>06:30 AM</td><td>Every 15 Mins</td></tr>
+                    </tbody>
+                </table>
             </div>
-            <!-- Item 3: Link back to Home Hub -->
-            <div class="service-item" onclick="window.location.href='home.html'">
-                <div class="service-icon">📡</div>
-                <button>Live Tracking</button>
+            <button class="btn btn-primary" style="margin-top: 20px; width:100%;" onclick="openUtilitySubSection('defaultServicesBlock')">← Back to Services Menu</button>
+        </div>
+
+        <!-- Working Sub-Panel 2: Real Feeder Buses Router Matrix -->
+        <div id="busSchedulePanel" class="hidden">
+            <div class="services-header">
+                <h2>NCRTC Last-Mile Feeder Buses</h2>
+                <p>Connecting neighborhoods directly to your nearest transit terminal hub infrastructure lines.</p>
             </div>
-            <!-- Item 4: Feeder Buses Alert -->
-            <div class="service-item" onclick="alert('Feeder bus scheduling routes are updating offline right now.')">
-                <div class="service-icon">🚌</div>
-                <button>Feeder Buses</button>
+            <div class="table-responsive">
+                <table class="timing-table">
+                    <thead>
+                        <tr><th>Route ID</th><th>Terminal Station Hub</th><th>Coverage Sectors / Route Drop Points</th><th>Timings Frequency</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>F-401</td><td>Sahibabad Terminal</td><td>Vasundhara Sec 1-5, Vaishali Metro Loop</td><td>Every 12 Mins</td></tr>
+                        <tr><td>F-402</td><td>Ghaziabad Station</td><td>Raj Nagar Extension, Kavi Nagar Commercial Area</td><td>Every 15 Mins</td></tr>
+                        <tr><td>F-405</td><td>Duhai Junction</td><td>Sanjay Geeta Colony, Local Multi-versity Campuses</td><td>Every 20 Mins</td></tr>
+                    </tbody>
+                </table>
             </div>
-            <!-- Item 5: Network Map Alert -->
-            <div class="service-item" onclick="alert('Downloading the high-resolution network map to your device...')">
-                <div class="service-icon">🗺️</div>
-                <button>Network Map</button>
+            <button class="btn btn-primary" style="margin-top: 20px; width:100%;" onclick="openUtilitySubSection('defaultServicesBlock')">← Back to Services Menu</button>
+        </div>
+
+        <!-- Working Sub-Panel 3: Interactive Visual Route Vector Map Embedded Layer -->
+        <div id="routeMapPanel" class="hidden">
+            <div class="services-header">
+                <h2>Interactive Corridor Network Map</h2>
+                <p>Live geographical tracking layer highlighting transit infrastructure alignments.</p>
             </div>
-            <!-- Item 6: Station Info Alert -->
-            <div class="service-item" onclick="alert('Station amenity maps and profiles are indexing...')">
-                <div class="service-icon">🏢</div>
-                <button>Station Info</button>
+            <div class="map-wrapper">
+                <iframe src="https://google.com" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
+            <button class="btn btn-primary" style="margin-top: 20px; width:100%;" onclick="openUtilitySubSection('defaultServicesBlock')">← Back to Services Menu</button>
         </div>
     </div>
+
+    <footer class="site-footer">
+        <p>© 2026 National Capital Region Transport Corporation. Automated Gateway System. All Rights Reserved.</p>
+    </footer>
 
     <div class="bottom-nav">
         <button onclick="window.location.href='home.html'">🚆 Home</button>
         <button onclick="window.location.href='bookings.html'">💼 Bookings</button>
         <button onclick="window.location.href='ticket.html'">🎟️ Ticket Book</button>
-        <button onclick="window.location.href='services.html'">⚙️ Services</button>
+        <button class="nav-active" onclick="window.location.href='services.html'">⚙️ Services</button>
     </div>
 
     <script src="js/main.js"></script>

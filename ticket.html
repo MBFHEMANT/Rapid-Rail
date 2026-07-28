@@ -6,10 +6,16 @@
     <title>Route & Fare Matrix Planner</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="dashboard-bg">
+    <header class="navbar">
+        <div class="logo"><span>🎟️</span> Ticket Terminal</div>
+        <div class="clock" id="clock">--:--:--</div>
+    </header>
+
     <div class="planner-card">
-        <h2 style="background: #003366; color: white; padding: 12px; border-radius: 6px; text-align: center; margin-bottom: 20px;">Route & Fare Planner</h2>
+        <div class="planner-title">Route & Fare Matrix Planner</div>
         
+        <!-- Standard Form Parameter Selectors Configuration -->
         <div class="form-group">
             <label for="fromStation">Origin Terminal Station</label>
             <select id="fromStation" class="form-control">
@@ -17,18 +23,13 @@
                 <option value="Anand Vihar,A02">Anand Vihar (A02)</option>
                 <option value="Sahibabad,A03" selected>Sahibabad (A03)</option>
                 <option value="Ghaziabad,A04">Ghaziabad (A04)</option>
-                <option value="Guldhar,A05">Guldhar (A05)</option>
                 <option value="Duhai,A06">Duhai (A06)</option>
-                <option value="Duhai Depot,A07">Duhai Depot (A07)</option>
-                <option value="Murad Nagar,A08">Murad Nagar (A08)</option>
-                <option value="Modi Nagar South,A09">Modi Nagar South (A09)</option>
-                <option value="Modi Nagar North,A10">Modi Nagar North (A10)</option>
                 <option value="Meerut South,A11">Meerut South (A11)</option>
             </select>
         </div>
 
         <div class="form-group">
-            <h3>Quick Select Nearby Hubs</h3>
+            <label style="margin-bottom: 12px;">Quick Select Hubs</label>
             <div class="station-list">
                 <button class="station-pill">New Ashok Nagar</button>
                 <button class="station-pill">Anand Vihar</button>
@@ -46,12 +47,7 @@
                 <option value="Anand Vihar,A02">Anand Vihar (A02)</option>
                 <option value="Sahibabad,A03">Sahibabad (A03)</option>
                 <option value="Ghaziabad,A04" selected>Ghaziabad (A04)</option>
-                <option value="Guldhar,A05">Guldhar (A05)</option>
                 <option value="Duhai,A06">Duhai (A06)</option>
-                <option value="Duhai Depot,A07">Duhai Depot (A07)</option>
-                <option value="Murad Nagar,A08">Murad Nagar (A08)</option>
-                <option value="Modi Nagar South,A09">Modi Nagar South (A09)</option>
-                <option value="Modi Nagar North,A10">Modi Nagar North (A10)</option>
                 <option value="Meerut South,A11">Meerut South (A11)</option>
             </select>
         </div>
@@ -60,27 +56,79 @@
             <label>Travel Compartment Class</label>
             <div class="class-selector">
                 <label><input type="radio" name="classType" value="Standard" checked> Standard Economy</label>
-                <label><input type="radio" name="classType" value="Premium"> Premium Class</label>
+                <label><input type="radio" name="classType" value="Premium"> Premium First Class</label>
             </div>
         </div>
 
-        <button class="btn" style="width: 100%; padding: 14px;" onclick="processFareEstimation()">Compute Tariff Matrix</button>
+        <button class="btn btn-primary" style="width: 100%; padding: 14px; margin-top: 10px;" onclick="processFareEstimation()">Compute Tariff Matrix</button>
 
+        <!-- Calculation Matrix Results Panel Display -->
         <div id="resultDisplayBlock" class="result-box hidden">
-            <h3>Calculated Fare Summary</h3>
-            <p style="margin: 6px 0;"><strong>From Station:</strong> <span id="fromResult"></span></p>
-            <p style="margin: 6px 0;"><strong>To Station:</strong> <span id="toResult"></span></p>
-            <p style="margin: 6px 0;"><strong>Class Selected:</strong> <span id="classResult"></span></p>
-            <h4 style="margin-top: 10px; color: #0a8643; font-size: 1.2rem;">Total Cost: ₹<span id="fareResult">0</span></h4>
-<button class="btn" style="background-color: #28a745; margin-top: 15px; width: 100%;" onclick="alert('Routing Transaction Token Engine Initialized...'); window.location.href='home.html';">Proceed To Gateway Payment</button>
+            <h3 style="color: white; margin-bottom: 15px;">Calculated Fare Summary</h3>
+            <p style="margin: 8px 0; color:#cbd5e1;"><strong>From Station:</strong> <span id="fromResult" style="color:white;"></span></p>
+            <p style="margin: 8px 0; color:#cbd5e1;"><strong>To Station:</strong> <span id="toResult" style="color:white;"></span></p>
+            <p style="margin: 8px 0; color:#cbd5e1;"><strong>Class Selected:</strong> <span id="classResult" style="color:white;"></span></p>
+            <h4 style="margin: 15px 0; color: #16a34a; font-size: 1.4rem;">Total Cost: <span id="fareResult">0</span></h4>
+            <button class="btn" style="background: linear-gradient(135deg, #16a34a, #15803d); color: white; width: 100%;" onclick="initializeTransactionProcess()">Proceed To Gateway Payment</button>
+        </div>
 
+        <!-- State 2: Automated 5-Second QR Loading Animation Deck -->
+        <div id="paymentProcessingCard" class="payment-processing-box hidden">
+            <h3 style="margin-bottom: 10px;">Awaiting Gateway Validation</h3>
+            <p style="color: #94a3b8; font-size: 0.9rem;">Scan the token identifier code below to authorize transaction</p>
+            <div class="qr-spinner">
+                <img src="https://qrserver.com" alt="Payment QR Target">
+            </div>
+            <p style="font-weight: bold; color: var(--accent); margin-top: 10px;">Processing network parameters... Do not close window</p>
+            <div class="countdown-line"><div class="countdown-progress"></div></div>
+        </div>
+
+        <!-- State 3: Digital Boarding Pass Ticket Output Screen -->
+        <div id="printedTicketCard" class="hidden" style="text-align: center;">
+            <h3 style="color: #16a34a; margin: 20px 0 10px;">✔ Ticket Successfully Booked!</h3>
+            <p style="color: #cbd5e1; font-size: 0.9rem;">Your secure high-speed transit profile registration voucher is ready.</p>
+            
+            <div class="boarding-pass-ticket">
+                <div class="ticket-header-deck">
+                    <h3>NAMO BHARAT BOARDING PASS</h3>
+                    <p style="font-size: 0.65rem; opacity: 0.8; letter-spacing: 0.5px;">NCRTC RAPID RAIL TRANSIT SYSTEM</p>
+                </div>
+                <div class="ticket-body-deck">
+                    <div class="ticket-route-row">
+                        <div class="route-stop">
+                            <p>ORIGIN</p>
+                            <h4 id="tktFrom">--</h4>
+                        </div>
+                        <div class="route-arrow-icon">▶</div>
+                        <div class="route-stop right">
+                            <p>DESTINATION</p>
+                            <h4 id="tktTo">--</h4>
+                        </div>
+                    </div>
+                    <div class="ticket-details-grid">
+                        <div class="detail-cell"><label>Booking PNR</label><span id="tktPnr">--</span></div>
+                        <div class="detail-cell"><label>Travel Class</label><span id="tktClass">--</span></div>
+                        <div class="detail-cell"><label>Issue Date</label><span id="tktDate">--</span></div>
+                        <div class="detail-cell"><label>Fare Paid</label><span id="tktFare">--</span></div>
+                    </div>
+                </div>
+                <div class="ticket-footer-barcode">
+                    <div class="barcode-visual" id="tktBarcode">||||||||||||||||||</div>
+                    <div class="ticket-id-txt">SECURITY SECURITY TOKEN ENGINE VALID</div>
+                </div>
+            </div>
+            <button class="btn btn-primary" style="margin-top: 25px; width: 100%;" onclick="window.location.href='bookings.html'">Go To My Bookings Ledger →</button>
         </div>
     </div>
+
+    <footer class="site-footer">
+        <p>© 2026 National Capital Region Transport Corporation. Automated Gateway System. All Rights Reserved.</p>
+    </footer>
 
     <div class="bottom-nav">
         <button onclick="window.location.href='home.html'">🚆 Home</button>
         <button onclick="window.location.href='bookings.html'">💼 Bookings</button>
-        <button onclick="window.location.href='ticket.html'">🎟️ Ticket Book</button>
+        <button class="nav-active" onclick="window.location.href='ticket.html'">🎟️ Ticket Book</button>
         <button onclick="window.location.href='services.html'">⚙️ Services</button>
     </div>
 

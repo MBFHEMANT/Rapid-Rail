@@ -3,29 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Namo Bharat - RRTS Portal</title>
+    <title>Namo Bharat - Transit Portal</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header class="navbar">
-        <div class="logo">🚆 Namo Bharat</div>
+        <div class="logo"><span>🚆</span> Namo Bharat RRTS</div>
         <div class="clock" id="clock">--:--:--</div>
     </header>
 
     <section class="hero">
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Rapid Rail Management System</h1>
-            <p>Experience safe, fast, and high-speed regional travel across the future network infrastructure maps.</p>
-            <a href="login.html" class="btn">Launch Gateway Access</a>
+            <span class="badge">Next-Gen Regional Transit</span>
+            <h1>The Future of High-Speed Travel</h1>
+            <p>Experience seamless interconnectivity across the regional capital network with India's premier rapid rail corridor system.</p>
+            <a href="login.html" class="btn btn-primary">Launch Gateway Access</a>
         </div>
-        <div class="train-animation"></div>
+        <div class="train-track-container">
+            <div class="train-animation"></div>
+        </div>
     </section>
 
-    <p id="spacebarMessage" style="text-align: center; color: #cc0000; font-weight: bold; position: fixed; top: 80px; width: 100%;"></p>
-
     <div class="bottom-nav">
-        <button onclick="window.location.href='index.html'">🚆 Main</button>
-        <button onclick="window.location.href='login.html'">👤 Access</button>
+        <button class="nav-active" onclick="window.location.href='index.html'">🏠 Home</button>
+        <button onclick="window.location.href='login.html'">👤 Access Gateway</button>
     </div>
 
     <script src="js/main.js"></script>

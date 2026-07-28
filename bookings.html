@@ -3,12 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Bookings Ledger</title>
+    <title>My Bookings Ledger - Namo Bharat</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Embed script parameters directly to read live local storage ticket objects */
+        .sync-ticket-card { background: white !important; color: #0f172a !important; font-family: monospace; border-radius: 12px; border: 2px dashed #cbd5e1; max-width: 420px; margin: 15px auto; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); text-align: left; }
+    </style>
 </head>
-<body>
+<body class="dashboard-bg">
+    <header class="navbar">
+        <div class="logo"><span>💼</span> Booking Ledger</div>
+    </header>
+
     <div class="dashboard-container" style="text-align: center;">
-        <h1 style="text-align: center; margin-top:20px;">Bookings Tracker</h1>
+        <h1 style="text-align: center; margin-top:20px; font-weight: 800; color: white;">Bookings Tracker</h1>
         <div class="underline"></div>
         
         <div class="tabs">
@@ -16,27 +24,65 @@
             <button class="tab-btn inactive-tab" id="completedBtn" onclick="switchBookingTab('completed')">Past History</button>
         </div>
 
+        <!-- Active Trips Tab Container Component -->
         <div class="booking-content" id="activeContent">
-            <img src="https://freepik.com" alt="Active Status">
-            <h2>No Current Active Bookings</h2>
-            <p>You do not hold any valid active travel profiles right now.</p>
-            <a href="ticket.html" class="btn" style="margin-top: 15px;">Plan Journey</a>
+            <!-- Dynamic Injection Slot targeting purchases from local storage scripts -->
+            <div id="dynamicTicketInjectionZone" class="hidden"></div>
+
+            <div id="emptyActiveStatePlaceholder">
+                <img src="https://unsplash.com" alt="Active Travel Status">
+                <h2>No Current Active Bookings</h2>
+                <p>You do not hold any valid active travel profiles right now.</p>
+                <a href="ticket.html" class="btn btn-primary" style="margin-top: 5px;">Plan Journey Now</a>
+            </div>
         </div>
 
+        <!-- Past History Tab Container Component -->
         <div class="booking-content hidden" id="completedContent">
-            <img src="https://freepik.com" alt="Completed Status">
+            <img src="https://unsplash.com" alt="Historical Archival Status">
             <h2>No Historical Records Found</h2>
             <p>Your cleared archival travel logs are currently vacant.</p>
         </div>
     </div>
 
+    <footer class="site-footer">
+        <p>© 2026 National Capital Region Transport Corporation. Automated Gateway System. All Rights Reserved.</p>
+    </footer>
+
     <div class="bottom-nav">
         <button onclick="window.location.href='home.html'">🚆 Home</button>
-        <button onclick="window.location.href='bookings.html'">💼 Bookings</button>
+        <button class="nav-active" onclick="window.location.href='bookings.html'">💼 Bookings</button>
         <button onclick="window.location.href='ticket.html'">🎟️ Ticket Book</button>
         <button onclick="window.location.href='services.html'">⚙️ Services</button>
     </div>
 
     <script src="js/main.js"></script>
+    <script>
+        // Execution synchronization reading purchases dynamically upon view mount initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            const bookedDataString = localStorage.getItem('activeBookingProfile');
+            if (bookedDataString) {
+                const data = JSON.parse(bookedDataString);
+                const container = document.getElementById('dynamicTicketInjectionZone');
+                const placeholder = document.getElementById('emptyActiveStatePlaceholder');
+                
+                if (container && placeholder) {
+                    placeholder.classList.add('hidden');
+                    container.innerHTML = `
+                        <div class="sync-ticket-card">
+                            <div style="text-align:center; font-weight:bold; color:#0056b3; margin-bottom:10px; border-bottom:1px solid #eee; padding-bottom:5px;">ACTIVE CORRIDOR PASS</div>
+                            <p style="margin:4px 0;"><strong>PNR:</strong> ${data.pnr}</p>
+                            <p style="margin:4px 0;"><strong>FROM:</strong> ${data.origin}</p>
+                            <p style="margin:4px 0;"><strong>TO:</strong> ${data.destination}</p>
+                            <p style="margin:4px 0;"><strong>CLASS:</strong> ${data.travelClass}</p>
+                            <p style="margin:4px 0;"><strong>FARE:</strong> ₹${data.fare}</p>
+                            <div style="margin-top:10px; font-size:0.75rem; text-align:center; color:#16a34a; font-weight:bold;">● VALID SECURE TRAVEL TOKEN PROFILE ACTIVE</div>
+                        </div>
+                    `;
+                    container.classList.remove('hidden');
+                }
+            }
+        });
+    </script>
 </body>
 </html>

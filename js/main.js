@@ -1,25 +1,21 @@
-// Global execution mapping on dynamic DOM loads
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Namo Bharat RRTS Portal Engine Initialised.");
+    console.log("Unified Namo Bharat Engine Initialised.");
     
-    // Core Engine 1: Timekeeper display tracking
+    // Core Module 1: Universal Synchronized Clock Loop
     const clockElement = document.getElementById('clock');
     if (clockElement) {
-        const updateClock = () => {
-            clockElement.textContent = new Date().toLocaleTimeString();
-        };
+        const updateClock = () => { clockElement.textContent = new Date().toLocaleTimeString(); };
         setInterval(updateClock, 1000);
         updateClock();
     }
 
-    // Core Engine 2: Station pill synchronizers
+    // Core Module 2: Interactive Station Quick Select Pills
     const pills = document.querySelectorAll('.station-pill');
     pills.forEach(pill => {
         pill.addEventListener('click', () => {
             pills.forEach(p => p.classList.remove('selected'));
             pill.classList.add('selected');
             
-            // Map pill down directly into the main selector tracking fields
             const targetSelect = document.getElementById('fromStation');
             if (targetSelect) {
                 for (let option of targetSelect.options) {
@@ -31,34 +27,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
-    // Core Engine 3: Key spacebar interceptor 
-    document.addEventListener('keydown', (event) => {
-        if (event.code === 'Space') {
-            const displayMsg = document.getElementById('spacebarMessage');
-            if (displayMsg) {
-                displayMsg.textContent = 'System Alert: Spacebar Event Tracked!';
-                setTimeout(() => displayMsg.textContent = '', 2000);
-            }
-        }
-    });
 });
 
-// Operational Script: Login Validator
+// Authentication Validation Router Hook
 function loginUser() {
     const user = document.getElementById('username').value.trim();
     const pass = document.getElementById('password').value;
-    
     if (user === "Namo" && pass === "1234") {
-        alert("Login Validated successfully!");
         window.location.href = "home.html";
     } else {
-        alert("Access Denied: Invalid Credentials provided.");
+        alert("Access Denied: Invalid Credentials.");
     }
-    return false; // Interrupt standard structural pipeline reloads
+    return false;
 }
 
-// Operational Script: Active Bookings Toggle System
+// Booking Tracker View Swapper Toggle
 function switchBookingTab(activeTabId) {
     const activeBtn = document.getElementById('activeBtn');
     const completedBtn = document.getElementById('completedBtn');
@@ -76,13 +59,18 @@ function switchBookingTab(activeTabId) {
     }
 }
 
-// Operational Script: Mathematical Fare Matrix Logic Builder
+// Fare Matrix Processor
 function processFareEstimation() {
-    const fromVal = document.getElementById("fromStation").value;
-    const toVal = document.getElementById("toStation").value;
+    const fromSelect = document.getElementById("fromStation");
+    const toSelect = document.getElementById("toStation");
     const selectedClassOpt = document.querySelector('input[name="classType"]:checked');
 
-    if (!fromVal || !toVal || !selectedClassOpt) return;
+    if (!fromSelect || !toSelect || !selectedClassOpt) return;
+    
+    const fromText = fromSelect.options[fromSelect.selectedIndex].text;
+    const toText = toSelect.options[toSelect.selectedIndex].text;
+    const fromVal = fromSelect.value;
+    const toVal = toSelect.value;
 
     if (fromVal === toVal) {
         alert("Error: Origin and Destination locations must be distinct terminals.");
@@ -93,13 +81,68 @@ function processFareEstimation() {
     const baseRate = 40;
     const upgradeCost = (classType === "Premium") ? 30 : 0;
     
-    // Generates logical programmatic distances safely across structural changes
     const distanceDelta = Math.abs(fromVal.charCodeAt(fromVal.length - 1) - toVal.charCodeAt(toVal.length - 1)) || 3;
     const finalizedFare = baseRate + upgradeCost + (distanceDelta * 10);
 
-    document.getElementById("fromResult").innerText = fromVal.split(',')[0];
-    document.getElementById("toResult").innerText = toVal.split(',')[0];
+    document.getElementById("fromResult").innerText = fromText;
+    document.getElementById("toResult").innerText = toText;
     document.getElementById("classResult").innerText = classType;
-    document.getElementById("fareResult").innerText = finalizedFare;
+    document.getElementById("fareResult").innerText = "₹" + finalizedFare;
     document.getElementById("resultDisplayBlock").classList.remove('hidden');
+
+    // Save ticket configuration properties directly in state storage for print execution mapping
+    const pendingTicketData = {
+        origin: fromText,
+        destination: toText,
+        travelClass: classType,
+        fare: finalizedFare,
+        timestamp: new Date().toLocaleString(),
+        pnr: "PNR" + Math.floor(10000000 + Math.random() * 90000000)
+    };
+    localStorage.setItem('pendingTicket', JSON.stringify(pendingTicketData));
+}
+
+// Automated 5-Second QR Payment Cycle Loader & Dynamic Boarding Pass Printer Engine
+function initializeTransactionProcess() {
+    const calculationUIBlock = document.getElementById('resultDisplayBlock');
+    const paymentProcessingCard = document.getElementById('paymentProcessingCard');
+    const printedTicketCard = document.getElementById('printedTicketCard');
+    
+    // Hide standard results block and open loading QR view container
+    calculationUIBlock.classList.add('hidden');
+    paymentProcessingCard.classList.remove('hidden');
+
+    // Trigger sequential 5.5 second automatic timeout delay handler loops
+    setTimeout(() => {
+        paymentProcessingCard.classList.add('hidden');
+        
+        // Fetch and load cached metadata out from localized runtime configuration strings
+        const sourceData = JSON.parse(localStorage.getItem('pendingTicket'));
+        if (sourceData) {
+            document.getElementById('tktPnr').innerText = sourceData.pnr;
+            document.getElementById('tktFrom').innerText = sourceData.origin;
+            document.getElementById('tktTo').innerText = sourceData.destination;
+            document.getElementById('tktClass').innerText = sourceData.travelClass;
+            document.getElementById('tktDate').innerText = sourceData.timestamp;
+            document.getElementById('tktFare').innerText = "₹" + sourceData.fare;
+            document.getElementById('tktBarcode').innerText = "||||| " + sourceData.pnr + " |||||";
+            
+            // Push active entry into ongoing tracking arrays securely for bookings tab synchronization
+            localStorage.setItem('activeBookingProfile', JSON.stringify(sourceData));
+        }
+        
+        printedTicketCard.classList.remove('hidden');
+    }, 5500);
+}
+
+// Utility Navigation UI Tab Swapper Logic Hooks
+function openUtilitySubSection(targetSubPanelId) {
+    const sections = ['defaultServicesBlock', 'busSchedulePanel', 'routeMapPanel', 'trainTimingsPanel'];
+    sections.forEach(id => {
+        const block = document.getElementById(id);
+        if (block) block.classList.add('hidden');
+    });
+    
+    const activeBlock = document.getElementById(targetSubPanelId);
+    if (activeBlock) activeBlock.classList.remove('hidden');
 }

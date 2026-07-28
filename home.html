@@ -3,30 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Passenger Dashboard - Namo Bharat</title>
+    <title>Dashboard Hub - Namo Bharat</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="dashboard-bg">
     <header class="navbar">
-        <div class="logo">🚆 Control Hub</div>
+        <div class="logo"><span>🚆</span> Namo Bharat Hub</div>
         <div class="clock" id="clock">--:--:--</div>
     </header>
 
     <div class="dashboard-container">
-        <div class="banner">
-            <h2>Welcome to Namo Bharat</h2>
-            <p>The Travelling Future: India's Premium High-Speed Regional Rail Link Infrastructure</p>
+        <div class="dash-hero">
+            <h2>Welcome Back, Passenger</h2>
+            <p>India's Premium High-Speed Regional Rail Link Network Infrastructure. Rapid, reliable, and sustainable transit at your service.</p>
         </div>
 
-        <div class="booking-info">
-            <h3>Need a Ticket for today's journey?</h3>
-            <p style="margin: 10px 0 20px; color: #666;">Fast track scheduling, electronic validations, and immediate seat processing systems are accessible.</p>
-            <button class="btn" onclick="window.location.href='ticket.html'">Book Electronic Ticket Now</button>
+        <div class="promo-card">
+            <h3>Ready to Book Your Next Journey?</h3>
+            <p>Fast track scheduling, electronic ticket generation, and secure corridor access parameters are fully operational across all operational terminal hubs.</p>
+            <button class="btn btn-primary" onclick="window.location.href='ticket.html'">Book Electronic Ticket</button>
         </div>
     </div>
 
+    <!-- Global System Footer Layout Module -->
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="home.html">Hub Dashboard</a> | <a href="services.html">Network Utility Panel</a> | <a href="#">Safety Rules</a>
+        </div>
+        <p>© 2026 National Capital Region Transport Corporation. Automated Gateway System. All Rights Reserved.</p>
+    </footer>
+
     <div class="bottom-nav">
-        <button onclick="window.location.href='home.html'">🚆 Home</button>
+        <button class="nav-active" onclick="window.location.href='home.html'">🚆 Home</button>
         <button onclick="window.location.href='bookings.html'">💼 Bookings</button>
         <button onclick="window.location.href='ticket.html'">🎟️ Ticket Book</button>
         <button onclick="window.location.href='services.html'">⚙️ Services</button>
