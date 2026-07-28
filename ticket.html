@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route & Fare Matrix Planner</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="planner-card">
+        <h2 style="background: #003366; color: white; padding: 12px; border-radius: 6px; text-align: center; margin-bottom: 20px;">Route & Fare Planner</h2>
+        
+        <div class="form-group">
+            <label for="fromStation">Origin Terminal Station</label>
+            <select id="fromStation" class="form-control">
+                <option value="New Ashok Nagar,A01">New Ashok Nagar (A01)</option>
+                <option value="Anand Vihar,A02">Anand Vihar (A02)</option>
+                <option value="Sahibabad,A03" selected>Sahibabad (A03)</option>
+                <option value="Ghaziabad,A04">Ghaziabad (A04)</option>
+                <option value="Guldhar,A05">Guldhar (A05)</option>
+                <option value="Duhai,A06">Duhai (A06)</option>
+                <option value="Duhai Depot,A07">Duhai Depot (A07)</option>
+                <option value="Murad Nagar,A08">Murad Nagar (A08)</option>
+                <option value="Modi Nagar South,A09">Modi Nagar South (A09)</option>
+                <option value="Modi Nagar North,A10">Modi Nagar North (A10)</option>
+                <option value="Meerut South,A11">Meerut South (A11)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <h3>Quick Select Nearby Hubs</h3>
+            <div class="station-list">
+                <button class="station-pill">New Ashok Nagar</button>
+                <button class="station-pill">Anand Vihar</button>
+                <button class="station-pill selected">Sahibabad</button>
+                <button class="station-pill">Ghaziabad</button>
+                <button class="station-pill">Duhai</button>
+                <button class="station-pill">Meerut South</button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="toStation">Destination Target Terminal</label>
+            <select id="toStation" class="form-control">
+                <option value="New Ashok Nagar,A01">New Ashok Nagar (A01)</option>
+                <option value="Anand Vihar,A02">Anand Vihar (A02)</option>
+                <option value="Sahibabad,A03">Sahibabad (A03)</option>
+                <option value="Ghaziabad,A04" selected>Ghaziabad (A04)</option>
+                <option value="Guldhar,A05">Guldhar (A05)</option>
+                <option value="Duhai,A06">Duhai (A06)</option>
+                <option value="Duhai Depot,A07">Duhai Depot (A07)</option>
+                <option value="Murad Nagar,A08">Murad Nagar (A08)</option>
+                <option value="Modi Nagar South,A09">Modi Nagar South (A09)</option>
+                <option value="Modi Nagar North,A10">Modi Nagar North (A10)</option>
+                <option value="Meerut South,A11">Meerut South (A11)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Travel Compartment Class</label>
+            <div class="class-selector">
+                <label><input type="radio" name="classType" value="Standard" checked> Standard Economy</label>
+                <label><input type="radio" name="classType" value="Premium"> Premium Class</label>
+            </div>
+        </div>
+
+        <button class="btn" style="width: 100%; padding: 14px;" onclick="processFareEstimation()">Compute Tariff Matrix</button>
+
+        <div id="resultDisplayBlock" class="result-box hidden">
+            <h3>Calculated Fare Summary</h3>
+            <p style="margin: 6px 0;"><strong>From Station:</strong> <span id="fromResult"></span></p>
+            <p style="margin: 6px 0;"><strong>To Station:</strong> <span id="toResult"></span></p>
+            <p style="margin: 6px 0;"><strong>Class Selected:</strong> <span id="classResult"></span></p>
+            <h4 style="margin-top: 10px; color: #0a8643; font-size: 1.2rem;">Total Cost: ₹<span id="fareResult">0</span></h4>
+<button class="btn" style="background-color: #28a745; margin-top: 15px; width: 100%;" onclick="alert('Routing Transaction Token Engine Initialized...'); window.location.href='home.html';">Proceed To Gateway Payment</button>
+
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <button onclick="window.location.href='home.html'">🚆 Home</button>
+        <button onclick="window.location.href='bookings.html'">💼 Bookings</button>
+        <button onclick="window.location.href='ticket.html'">🎟️ Ticket Book</button>
+        <button onclick="window.location.href='services.html'">⚙️ Services</button>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

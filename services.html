@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More Services - Transit Utilities</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* This explicit style block overrides any blocking CSS layers instantly */
+        .service-item button {
+            width: 100%;
+            height: 100%;
+            cursor: pointer !important;
+            position: relative;
+            z-index: 2000 !important; /* Forces buttons to sit on the very top layer */
+            border: none;
+            background: transparent;
+            font-weight: bold;
+            padding: 5px;
+        }
+        .service-item {
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .service-item:hover {
+            background-color: #eef5fc !important;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">🚆 Utility Panel</div>
+    </header>
+
+    <div class="services-container">
+        <div class="services-header">
+            <h2>System Add-ons For You</h2>
+            <p>Supplementary integrations designed to manage trip tracking data efficiently.</p>
+        </div>
+        
+        <div class="services-grid">
+            <!-- Item 1: Open Fare Calculator -->
+            <div class="service-item" onclick="window.location.href='ticket.html'">
+                <div class="service-icon">₹</div>
+                <button>Fare Tools</button>
+            </div>
+            <!-- Item 2: Link to Bookings Tab -->
+            <div class="service-item" onclick="window.location.href='bookings.html'">
+                <div class="service-icon">📅</div>
+                <button>Train Timings</button>
+            </div>
+            <!-- Item 3: Link back to Home Hub -->
+            <div class="service-item" onclick="window.location.href='home.html'">
+                <div class="service-icon">📡</div>
+                <button>Live Tracking</button>
+            </div>
+            <!-- Item 4: Feeder Buses Alert -->
+            <div class="service-item" onclick="alert('Feeder bus scheduling routes are updating offline right now.')">
+                <div class="service-icon">🚌</div>
+                <button>Feeder Buses</button>
+            </div>
+            <!-- Item 5: Network Map Alert -->
+            <div class="service-item" onclick="alert('Downloading the high-resolution network map to your device...')">
+                <div class="service-icon">🗺️</div>
+                <button>Network Map</button>
+            </div>
+            <!-- Item 6: Station Info Alert -->
+            <div class="service-item" onclick="alert('Station amenity maps and profiles are indexing...')">
+                <div class="service-icon">🏢</div>
+                <button>Station Info</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <button onclick="window.location.href='home.html'">🚆 Home</button>
+        <button onclick="window.location.href='bookings.html'">💼 Bookings</button>
+        <button onclick="window.location.href='ticket.html'">🎟️ Ticket Book</button>
+        <button onclick="window.location.href='services.html'">⚙️ Services</button>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

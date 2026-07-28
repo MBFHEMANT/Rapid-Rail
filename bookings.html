@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings Ledger</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard-container" style="text-align: center;">
+        <h1 style="text-align: center; margin-top:20px;">Bookings Tracker</h1>
+        <div class="underline"></div>
+        
+        <div class="tabs">
+            <button class="tab-btn active-tab" id="activeBtn" onclick="switchBookingTab('active')">Active Trips</button>
+            <button class="tab-btn inactive-tab" id="completedBtn" onclick="switchBookingTab('completed')">Past History</button>
+        </div>
+
+        <div class="booking-content" id="activeContent">
+            <img src="https://freepik.com" alt="Active Status">
+            <h2>No Current Active Bookings</h2>
+            <p>You do not hold any valid active travel profiles right now.</p>
+            <a href="ticket.html" class="btn" style="margin-top: 15px;">Plan Journey</a>
+        </div>
+
+        <div class="booking-content hidden" id="completedContent">
+            <img src="https://freepik.com" alt="Completed Status">
+            <h2>No Historical Records Found</h2>
+            <p>Your cleared archival travel logs are currently vacant.</p>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <button onclick="window.location.href='home.html'">🚆 Home</button>
+        <button onclick="window.location.href='bookings.html'">💼 Bookings</button>
+        <button onclick="window.location.href='ticket.html'">🎟️ Ticket Book</button>
+        <button onclick="window.location.href='services.html'">⚙️ Services</button>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
