@@ -137,7 +137,7 @@ function initializeTransactionProcess() {
 
 // Utility Navigation UI Tab Swapper Logic Hooks
 function openUtilitySubSection(targetSubPanelId) {
-    const sections = ['defaultServicesBlock', 'busSchedulePanel', 'routeMapPanel', 'trainTimingsPanel'];
+    const sections = ['defaultServicesBlock', 'busSchedulePanel', 'routeMapPanel', 'trainTimingsPanel', 'stationInfoPanel'];
     sections.forEach(id => {
         const block = document.getElementById(id);
         if (block) block.classList.add('hidden');

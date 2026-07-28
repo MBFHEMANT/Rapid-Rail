@@ -46,8 +46,8 @@
                     <div class="service-icon">📡</div>
                     <button>Live Tracking</button>
                 </div>
-                <!-- Item 6: Station Info Alert -->
-                <div class="service-item" onclick="alert('Station amenities indexing feature releasing soon!')" style="cursor: pointer;">
+                <!-- Item 6: Station Info Panel Link -->
+                <div class="service-item" onclick="openUtilitySubSection('stationInfoPanel')" style="cursor: pointer;">
                     <div class="service-icon">🏢</div>
                     <button>Station Info</button>
                 </div>
@@ -104,6 +104,48 @@
             </div>
             <div class="map-wrapper">
                 <iframe src="https://google.com" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <button class="btn btn-primary" style="margin-top: 20px; width:100%;" onclick="openUtilitySubSection('defaultServicesBlock')">← Back to Services Menu</button>
+        </div>
+
+        <!-- Working Sub-Panel 4: Terminal Hub Amenities & Profiles -->
+        <div id="stationInfoPanel" class="hidden">
+            <div class="services-header">
+                <h2>Terminal Hub Amenities & Details</h2>
+                <p>Operational profiles and interchange tracking logs across prime corridor stations.</p>
+            </div>
+            <div class="table-responsive">
+                <table class="timing-table">
+                    <thead>
+                        <tr><th>Station Name</th><th>Platforms</th><th>Key Amenities</th><th>Interchange Connectivity</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Anand Vihar (A02)</strong></td>
+                            <td>3 Platforms</td>
+                            <td>Wi-Fi, Multi-Level Parking, Food Courts, ATM</td>
+                            <td>Metro Blue/Pink Lines, ISBT Bus Terminal, Indian Railways Station</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sahibabad (A03)</strong></td>
+                            <td>2 Platforms</td>
+                            <td>EV Charging Stations, Ticket Vending, Baggage Scanners</td>
+                            <td>Local City Bus Feeder Lines, Auto Stand Clusters</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ghaziabad (A04)</strong></td>
+                            <td>4 Platforms</td>
+                            <td>Premium Executive Lounge, Medical Room, Elevators</td>
+                            <td>Connecting District Feeder Routes, Main Highway Transit Blocks</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Duhai Junction (A06)</strong></td>
+                            <td>2 Platforms</td>
+                            <td>Cycle Rental Stand, Lost & Found Hub, Information Desk</td>
+                            <td>Depot Maintenance Link Roads, University Shuttle Feeder Lines</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <button class="btn btn-primary" style="margin-top: 20px; width:100%;" onclick="openUtilitySubSection('defaultServicesBlock')">← Back to Services Menu</button>
         </div>

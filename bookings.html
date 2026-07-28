@@ -70,13 +70,13 @@
                     placeholder.classList.add('hidden');
                     container.innerHTML = `
                         <div class="sync-ticket-card">
-                            <div style="text-align:center; font-weight:bold; color:#0056b3; margin-bottom:10px; border-bottom:1px solid #eee; padding-bottom:5px;">ACTIVE CORRIDOR PASS</div>
-                            <p style="margin:4px 0;"><strong>PNR:</strong> ${data.pnr}</p>
-                            <p style="margin:4px 0;"><strong>FROM:</strong> ${data.origin}</p>
-                            <p style="margin:4px 0;"><strong>TO:</strong> ${data.destination}</p>
-                            <p style="margin:4px 0;"><strong>CLASS:</strong> ${data.travelClass}</p>
-                            <p style="margin:4px 0;"><strong>FARE:</strong> ₹${data.fare}</p>
-                            <div style="margin-top:10px; font-size:0.75rem; text-align:center; color:#16a34a; font-weight:bold;">● VALID SECURE TRAVEL TOKEN PROFILE ACTIVE</div>
+                            <div style="text-align:center; font-weight:bold; color:#0056b3; margin-bottom:15px; border-bottom:1px dashed #ccc; padding-bottom:8px; font-size:1.1rem; letter-spacing:0.5px;">ACTIVE CORRIDOR PASS</div>
+                            <p style="margin:8px 0; color:#1e293b; font-size:0.95rem;"><strong>PNR:</strong> <span style="color:#0f172a; font-weight:700;">${data.pnr}</span></p>
+                            <p style="margin:8px 0; color:#1e293b; font-size:0.95rem;"><strong>FROM:</strong> <span style="color:#0f172a; font-weight:700;">${data.origin}</span></p>
+                            <p style="margin:8px 0; color:#1e293b; font-size:0.95rem;"><strong>TO:</strong> <span style="color:#0f172a; font-weight:700;">${data.destination}</span></p>
+                            <p style="margin:8px 0; color:#1e293b; font-size:0.95rem;"><strong>CLASS:</strong> <span style="color:#0f172a; font-weight:700;">${data.travelClass}</span></p>
+                            <p style="margin:8px 0; color:#1e293b; font-size:0.95rem;"><strong>FARE:</strong> <span style="color:#16a34a; font-weight:700;">₹${data.fare}</span></p>
+                            <div style="margin-top:15px; font-size:0.8rem; text-align:center; color:#15803d; font-weight:bold; background-color:#f0fdf4; padding:6px; border-radius:6px; border:1px solid #bbf7d0;">● VALID SECURE TRAVEL TOKEN PROFILE ACTIVE</div>
                         </div>
                     `;
                     container.classList.remove('hidden');
