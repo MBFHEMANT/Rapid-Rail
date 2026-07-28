@@ -9,6 +9,7 @@
 <body class="dashboard-bg">
     <header class="navbar">
         <div class="logo"><span>⚙️</span> Utility Panel</div>
+        <div class="clock" id="clock">--:--:--</div>
     </header>
 
     <div class="services-container">
@@ -18,30 +19,37 @@
                 <h2>System Add-ons For You</h2>
                 <p>Supplementary integrations designed to manage trip tracking data and connecting transit modes efficiently.</p>
             </div>
+            
             <div class="services-grid">
-                <div class="service-item">
+                <!-- Item 1: Open Fare Calculator -->
+                <div class="service-item" onclick="window.location.href='ticket.html'" style="cursor: pointer;">
                     <div class="service-icon">₹</div>
-                    <button onclick="window.location.href='ticket.html'">Fare Tools</button>
+                    <button>Fare Tools</button>
                 </div>
-                <div class="service-item">
+                <!-- Item 2: Link to Train Timings -->
+                <div class="service-item" onclick="openUtilitySubSection('trainTimingsPanel')" style="cursor: pointer;">
                     <div class="service-icon">📅</div>
-                    <button onclick="openUtilitySubSection('trainTimingsPanel')">Train Timings</button>
+                    <button>Train Timings</button>
                 </div>
-                <div class="service-item">
+                <!-- Item 3: Link to Feeder Buses -->
+                <div class="service-item" onclick="openUtilitySubSection('busSchedulePanel')" style="cursor: pointer;">
                     <div class="service-icon">🚌</div>
-                    <button onclick="openUtilitySubSection('busSchedulePanel')">Feeder Buses</button>
+                    <button>Feeder Buses</button>
                 </div>
-                <div class="service-item">
+                <!-- Item 4: Link to Network Map -->
+                <div class="service-item" onclick="openUtilitySubSection('routeMapPanel')" style="cursor: pointer;">
                     <div class="service-icon">🗺️</div>
-                    <button onclick="openUtilitySubSection('routeMapPanel')">Network Map</button>
+                    <button>Network Map</button>
                 </div>
-                <div class="service-item">
+                <!-- Item 5: Link to Live Tracking -->
+                <div class="service-item" onclick="window.location.href='home.html'" style="cursor: pointer;">
                     <div class="service-icon">📡</div>
-                    <button onclick="window.location.href='home.html'">Live Tracking</button>
+                    <button>Live Tracking</button>
                 </div>
-                <div class="service-item">
+                <!-- Item 6: Station Info Alert -->
+                <div class="service-item" onclick="alert('Station amenities indexing feature releasing soon!')" style="cursor: pointer;">
                     <div class="service-icon">🏢</div>
-                    <button onclick="alert('Station amenities indexing feature releasing soon!')">Station Info</button>
+                    <button>Station Info</button>
                 </div>
             </div>
         </div>
